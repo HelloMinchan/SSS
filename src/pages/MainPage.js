@@ -3,11 +3,14 @@ import styled from "styled-components";
 
 import { Typography } from "@material-ui/core";
 
-import mainImage1 from "../images/mainImage1.jpg";
+import backgroundVedio from "../videos/background.mp4";
 
 function MainPage() {
   return (
     <Container>
+      <VideoBackground autoPlay loop>
+        <source src={backgroundVedio} type="video/mp4" />
+      </VideoBackground>
       <Section1>
         <Section1Left>
           <Section1Title>
@@ -29,13 +32,19 @@ const Container = styled.div`
   background-color: #12342f;
 `;
 
+const VideoBackground = styled.video`
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  overflow: hidden;
+`;
+
 const Section1 = styled.div`
   height: 100vh;
   padding: 5%;
-
-  background-image: url(${mainImage1});
-  background-repeat: no-repeat;
-  background-size: cover;
 `;
 const Section1Left = styled.div`
   height: 100%;
@@ -55,7 +64,7 @@ const Section1Title = styled.div`
     0 0 40px #d9d9d9, 0 0 70px #00ccff, 0 0 80px #cccccc;
   @keyframes fadeOut {
     0% {
-      opacity: 0.4;
+      opacity: 1;
     }
     100% {
       opacity: 1;
