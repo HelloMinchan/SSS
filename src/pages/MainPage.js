@@ -8,9 +8,6 @@ import backgroundVedio from "../videos/background.mp4";
 function MainPage() {
   return (
     <Container>
-      <VideoBackground autoPlay loop>
-        <source src={backgroundVedio} type="video/mp4" />
-      </VideoBackground>
       <Section1>
         <Section1Left>
           <Section1Title>
@@ -21,6 +18,9 @@ function MainPage() {
         </Section1Left>
         <Section1Right></Section1Right>
       </Section1>
+      <VideoBackground autoPlay loop={true}>
+        <source src={backgroundVedio} type="video/mp4" />
+      </VideoBackground>
       <Section2></Section2>
       <Section3></Section3>
     </Container>
@@ -28,43 +28,46 @@ function MainPage() {
 }
 
 const Container = styled.div`
-  height: 100%;
-  background-color: #12342f;
+  width: 100%;
 `;
 
 const VideoBackground = styled.video`
-  position: absolute;
+  position: relative;
   min-width: 100%;
   min-height: 100%;
   width: auto;
   height: auto;
-  z-index: 0;
+  z-index: -1;
   overflow: hidden;
+  background-color: white;
 `;
 
 const Section1 = styled.div`
-  height: 100vh;
-  padding: 5%;
+  width: 100%;
+
+  position: absolute;
 `;
 const Section1Left = styled.div`
   height: 100%;
   width: 50%;
+  padding: 5%;
 `;
 const Section1Title = styled.div`
   color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-size: 6vmax;
-  animation-name: fadeOut;
-  animation-duration: 1s;
-  animation-delay: 1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
+
+  animation-name: fadein;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  /* animation-iteration-count: infinite; */
+  animation-timing-function: linear;
   animation-direction: alternate;
-  text-shadow: 0 0 10px #cccccc, 0 0 20px #cccccc, 0 0 30px #e6e6e6,
-    0 0 40px #d9d9d9, 0 0 70px #00ccff, 0 0 80px #cccccc;
-  @keyframes fadeOut {
+  text-shadow: 0 0 10px #cccccc, 0 0 15px #cccccc, 0 0 20px #e6e6e6;
+  /* 0 0 23px #d9d9d9, 0 0 25px #d9d9d9, 0 0 30px #cccccc; */
+  @keyframes fadein {
     0% {
-      opacity: 1;
+      opacity: 0;
     }
     100% {
       opacity: 1;
